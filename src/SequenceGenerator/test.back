@@ -1,0 +1,44 @@
+module test(
+    clk,
+    rst,
+    out
+);
+
+input clk, rst;
+output reg [2:0] out;
+
+// 000, 010, 011, 101
+localparam STATE_1 = 2'b00,
+           STATE_2 = 2'b01,
+           STATE_3 = 2'b10,
+           STATE_4 = 2'b11;
+
+reg [1:0] CURRENT_STATE;
+
+always @ (posedge clk) begin
+    if ( rst ) begin
+        CURRENT_STATE <= STATE_1;
+    end else begin
+        case ( CURRENT_STATE ) 
+            STATE_1: begin
+                out           <= 3'b000;
+                CURRENT_STATE <= STATE_2;
+            end
+            STATE_2: begin
+                out           <= 3'b010;
+                CURRENT_STATE <= STATE_3;
+            end
+            STATE_3: begin
+                out           <= 3'b011;
+                CURRENT_STATE <= STATE_4;
+            end
+            STATE_4: begin
+                out           <= 3'b101;
+                CURRENT_STATE <= STATE_1;
+            end
+        endcase
+    end
+
+end
+
+endmodule
