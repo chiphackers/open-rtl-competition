@@ -3,39 +3,6 @@
 # cd to location where the script is stored
 cd "$(dirname "${BASH_SOURCE[0]}")"
 
-# check if auto_sync.sh exist if not generate it
-SYNC_SCRIPT="./.auto_sync.sh"
-if [ ! -f $SYNC_SCRIPT ]; then
-    if [ "`which expect`" == "" ]; then
-        echo "[ ERROR ]: expect is not found in PATH"
-        exit 0
-    fi
-    
-    read -p "Enter git password : " -s GIT_PASSWORD
-    echo ""
-    GIT_PASSWORD="`echo $GIT_PASSWORD | base64`"
-    EXPECT_EXE="`which expect`"
-    
-    touch $SYNC_SCRIPT
-    echo -e "#!$EXPECT_EXE"                                                         >> $SYNC_SCRIPT
-    echo -e ""                                                                      >> $SYNC_SCRIPT
-    echo -e "set timeout 9"                                                         >> $SYNC_SCRIPT
-    echo -e "spawn git pull origin master"                                          >> $SYNC_SCRIPT
-    echo -e "expect {"                                                              >> $SYNC_SCRIPT
-    echo -e "    timeout { send_user \"\nFailed to get password\n\"; exit 1; }"     >> $SYNC_SCRIPT
-    echo -e "    eof { send_user \"\nConnection Failed\n\"; exit 1; }"              >> $SYNC_SCRIPT
-    echo -e "    \"Password for\""                                                  >> $SYNC_SCRIPT
-    echo -e "}"                                                                     >> $SYNC_SCRIPT
-    echo -e "send \"`echo $GIT_PASSWORD | base64 --decode`\r\""                     >> $SYNC_SCRIPT
-    echo -e "expect {"                                                              >> $SYNC_SCRIPT
-    echo -e "    timeout { send_user \"\ngit pull failed\n\"; exit 1; }"            >> $SYNC_SCRIPT
-    echo -e "}"                                                                     >> $SYNC_SCRIPT
-    sudo chmod +x $SYNC_SCRIPT
-fi
-
-# get the latest revision of repository
-$SYNC_SCRIPT
-
 fileList=`find ./src/ -name '*.md'`
 count=0
 
