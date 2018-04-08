@@ -13,7 +13,7 @@ Pattern Detector
 
 > Detect 11010 bit pattern from user input stream.
                 
-IMPORTANT : module name should be **pattern\_detect**. If a different module name is used it will fail in the test run.
+**IMPORTANT :** module name should be **solution**. If a different module name is used it will fail in the test run.
 
 I/O Description
 ---------------
