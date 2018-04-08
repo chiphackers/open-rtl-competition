@@ -5,7 +5,7 @@ minor_type=counter
 author=udara
 checker=sim_out
 language=verilog
-abstract=Sequence generation is a common application in digital electronics. Generate a simple three bit sequence
+excerpt=Sequence generation is a common application in digital electronics. Generate a simple three bit sequence
 difficulty=easy
 points=10
 -->
