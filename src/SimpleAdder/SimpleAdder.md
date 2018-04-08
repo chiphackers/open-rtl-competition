@@ -13,18 +13,18 @@ points=10
 
 Design a four bits binary adder. Ignore the carry out of the operation. Input and output of the system are shown in the below table.
 
-Your solution should have only one module with the name test. IO signal should exactly match the signal names mentioned in the table
+**IMPORTANT :** Your solution should have only one module with the name **solution**. IO signal should exactly match the signal names mentioned in the table
 else the answer is considered wrong.
 
 System IOs
 ----------
 
 
-| Signam Name | IO direction | Bits width |  Function           | 
-|-------------|--------------|------------|---------------------| 
-| data_a_i    | INPUT        | 4          |          _          | 
-| data_b_i    | INPUT        | 4          |          _          | 
-| data_o      | OUTPUT       | 4          | data_a_i + data_b_i | 
+| Signam Name   | IO direction  | Bits width |  Function               | 
+|---------------|---------------|------------|-------------------------| 
+| data\_a\_i    | INPUT         | 4          |            _            | 
+| data\_b\_i    | INPUT         | 4          |            _            | 
+| data\_o       | OUTPUT        | 4          | data\_a\_i + data\_b\_i | 
 
 
 Example

@@ -1,4 +1,4 @@
-module test(
+module solution(
     data_a_i,
     data_b_i,
     data_o

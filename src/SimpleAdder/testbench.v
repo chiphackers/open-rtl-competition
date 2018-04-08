@@ -3,7 +3,7 @@ module testbench;
 reg [3:0] a,b;
 wire [3:0] o;
 
-test my_adder(a,b,o);
+solution my_adder(a,b,o);
 
 initial begin
     #10;
