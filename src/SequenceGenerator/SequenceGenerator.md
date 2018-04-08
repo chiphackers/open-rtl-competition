@@ -19,7 +19,7 @@ output : 000 -> 010 -> 011 -> 101
 reset condition :
 Synchronous active high ( i.e Reset will happen when rst=1 at positive edge of clk)
 
-Your solution should have only one module with the name test. IO signal should exactly match the signal names mentioned in the table
+**IMPORTANT :** Your solution should have only one module with the name **solution**. IO signal should exactly match the signal names mentioned in the table
 else the answer is considered wrong.
 
 System IOs

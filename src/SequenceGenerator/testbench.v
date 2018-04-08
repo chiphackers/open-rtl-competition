@@ -3,7 +3,7 @@ module testbench;
 reg clk, rst;
 wire [2:0] out;
 
-test seqGenertor(clk, rst, out);
+solution seqGenertor(.clk(clk), .rst(rst), .out(out));
 
 initial begin
     rst = 1'b1;

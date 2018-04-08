@@ -1,4 +1,4 @@
-module test(
+module solution(
   input clk, rst,
   output reg [2:0] out
 );
