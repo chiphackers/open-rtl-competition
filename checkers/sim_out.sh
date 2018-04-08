@@ -20,15 +20,32 @@ TEST_FILE=$2
 if [ -f compile.log ]; then
     rm compile.log
 fi
-
-######### Start Testing #############
-
-iverilog $TEST_FILE $PROB_DIR/testbench.v |& tee compile.log
+######### Compile check #############
+iverilog $TEST_FILE > compile.log 2>&1
 
 if [ "`cat compile.log`" != "" ]; then
     echo "[ERROR  ]: compilation failed"
     echo "----------[LOG]------------"
-    cat compile.log
+    cat compile.log | sed -e "s@`pwd`@@"
+    echo "----------[END]------------"
+    rm compile.log
+    exit 1
+fi
+
+######### Sanity Work ###############
+if [ -f compile.log ]; then
+    rm compile.log
+fi
+
+######### Start Testing #############
+# we need to verify whether TEST_FILE is compile errors free
+# because if not it will throw errors in testbench file
+iverilog $TEST_FILE $PROB_DIR/testbench.v > compile.log 2>&1
+
+if [ "`cat compile.log`" != "" ]; then
+    echo "[ERROR  ]: compilation failed"
+    echo "----------[LOG]------------"
+    cat compile.log | sed -e "s@`pwd`@@"
     echo "----------[END]------------"
     rm compile.log
     exit 1
