@@ -4,6 +4,8 @@ major_type=Sequential
 minor_type=FSM
 author=udara
 checker=open_sim_out
+language=verilog
+abstract=Every communication protocol requires a pattern detector in the receiver. Try to detect this simple five bit pattern.
 difficulty=moderate
 points=10
 -->

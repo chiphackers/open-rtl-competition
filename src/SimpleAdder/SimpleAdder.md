@@ -4,6 +4,8 @@ major_type=seq
 minor_type=test
 author=udara
 checker=sim_out
+language=verilog
+abstract=RTL modules performing arithmatic addition are called Adders. Try implementing four bits adder ignoring the carry out bit
 difficulty=easy
 points=10
 -->
